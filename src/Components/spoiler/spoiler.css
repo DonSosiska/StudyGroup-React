@@ -36,7 +36,12 @@
 .question::after{
     position: absolute;
     content: url('./icon-arrow-down.svg');
+    transition: transform linear 0.2s;
     right: 5vw;
+}
+
+.question.focus::after{
+    transform: rotate(180deg);
 }
 
 .spoiler::after{
