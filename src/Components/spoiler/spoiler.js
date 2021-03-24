@@ -14,18 +14,28 @@ export default class Spoiler extends Component{
         return(
             <li className="spoiler">
                 <h2 className="question" onClick={(e)=>{
-                    console.log(e);
-                    e.currentTarget.classList.toggle("focus");
-                    const el = document.querySelector("#"+n);
-                    let flag = false;
-                    if (el.classList.contains("show")){
-                        flag = true;
+                    let flag1 = false;
+                    let flag2 = false;
+                    
+                    if (e.currentTarget.classList.contains("focus")){
+                        flag1 = true;
                     }
-                    const list = el.parentNode.parentNode.querySelectorAll(".show");
+                    let list = e.currentTarget.parentNode.parentNode.querySelectorAll(".focus");
+                    list.forEach((item)=>{
+                        item.classList.remove("focus");
+                    });
+                    const el = document.querySelector("#"+n);
+                    if (el.classList.contains("show")){
+                        flag2 = true;
+                    }
+                    list = el.parentNode.parentNode.querySelectorAll(".show");
                     list.forEach((item)=>{
                         item.classList.remove("show");
                     });
-                    if (!flag){
+                    if (!flag1){
+                        e.currentTarget.classList.add("focus");
+                    }
+                    if (!flag2){
                         el.classList.add("show");
                     }
                     }
